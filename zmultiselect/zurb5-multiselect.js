@@ -33,11 +33,13 @@
         
         //open dropdown onclick
         $(document).on('click', '.zselect', function(e){
-           var click = $(e.target).prop("tagName");
+           var target = $(e.target);
+           var click = target.prop("tagName");
            //console.log(click);
            if(click!=='LI' && click!=='INPUT'){
                     $("li.zmsfilter input").val('').keyup(); //clean filter
                     $("ul",this).toggle(); 
+                    target.trigger('opened.zmultiselect', [this, target]);
            }
             
         });
